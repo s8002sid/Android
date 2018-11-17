@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.io.IOException;
@@ -47,18 +48,21 @@ public class MainActivity extends AppCompatActivity {
         db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         Cursor resultSet;
         try {
-            resultSet = db.rawQuery("Select name from family_master", null);
-        ArrayList<String> mylist = new ArrayList<>();
+            resultSet = db.rawQuery("Select name, phone_number from family_master", null);
+        ArrayList<String> nameList = new ArrayList<>();
+            ArrayList<String> phoneNumberList = new ArrayList<>();
         resultSet.moveToFirst();
         for (int i = 0; i < resultSet.getCount(); i++)
         {
-            mylist.add(resultSet.getString(0));
+            nameList.add(resultSet.getString(0));
+            phoneNumberList.add(resultSet.getString(1));
             resultSet.moveToNext();
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_listview, mylist);
+        MyListAdapter listAdapter = new MyListAdapter(MainActivity.this, nameList, phoneNumberList);
+        //ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_listview, mylist);
         final ListView listview = findViewById(R.id.listview);
-        listview.setAdapter(adapter);
+        listview.setAdapter(listAdapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
