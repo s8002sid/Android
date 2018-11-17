@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ListViewSample</string>
+    <string name="name">Name </string>
+    <string name="address">Address </string>
+    <string name="phone_number">Phone Number </string>
+    <string name="business">Business </string>
+    <string name="business_phone">Business Phone </string>
+    <string name="native_place">Native Place</string>
+    <string name="special_qualification">Special Qualification</string>
 </resources>
