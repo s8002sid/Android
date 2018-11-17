@@ -13,15 +13,13 @@ import com.example.siddjain.listviewsample.R;
 
 import java.util.ArrayList;
 
-public class MyListAdapter extends ArrayAdapter<String> {
+public class MyListAdapter extends ArrayAdapter<FamilyMaster> {
     private final Context fContext;
-    private ArrayList<String> fName = new ArrayList<>();
-    private ArrayList<String> fMobileNumber = new ArrayList<>();
-    public MyListAdapter(@NonNull Context context, ArrayList<String> name, ArrayList<String> mobileNumber) {
-        super(context, R.layout.activity_listview, name);
+    private ArrayList<FamilyMaster> fFamilyMasterAL = new ArrayList<>();
+    public MyListAdapter(@NonNull Context context, ArrayList<FamilyMaster> fm_al) {
+        super(context, R.layout.activity_listview, fm_al);
         this.fContext = context;
-        this.fName = name;
-        this.fMobileNumber = mobileNumber;
+        this.fFamilyMasterAL = fm_al;
     }
 
     @NonNull
@@ -31,12 +29,10 @@ public class MyListAdapter extends ArrayAdapter<String> {
         View rowView= inflater.inflate(R.layout.activity_listview, null, true);
         TextView txtName = rowView.findViewById(R.id.tvName);
         TextView txtMobNo = rowView.findViewById(R.id.tvMobileNumber);
-        txtName.setText(fName.get(position));
-        String mobileNumber = fMobileNumber.get(position);
-        txtMobNo.setText(mobileNumber);
-        if (mobileNumber.equals("")) {
-            txtMobNo.setVisibility(View.INVISIBLE);
-        }
+        FamilyMaster fm = fFamilyMasterAL.get(position);
+        txtName.setText(fm.getName());
+        String phno = fm.getPhoneNumber();
+        txtMobNo.setText(phno);
         return rowView;
     }
 }
