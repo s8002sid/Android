@@ -7,4 +7,6 @@
     <string name="business_phone">Business Phone </string>
     <string name="native_place">Native Place</string>
     <string name="special_qualification">Special Qualification</string>
+    <string name="facebook_app_id">2424413347785759</string>
+    <string name="fb_login_protocol_scheme">fb2424413347785759</string>
 </resources>
